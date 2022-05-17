@@ -2,8 +2,6 @@
 
 
     import com.letscode.Entities.Oscar;
-
-    import javax.naming.Name;
     import java.util.Scanner;
     import java.io.BufferedReader;
     import java.io.FileReader;
@@ -20,19 +18,16 @@
             Path path1 = Paths.get("/home/ericafnunes/Downloads/oscar_age_male.csv");
             Path path2 = Paths.get("/home/ericafnunes/Downloads/oscar_age_female.csv");
 
-            List<Oscar> listOscarMale = new ArrayList<>();
-            listOscarMale = readlist(path1);
+            List<Oscar> listOscarMale = readlist(path1);
 
-            List<Oscar> listOscarFemale = new ArrayList<>();
-            listOscarFemale = readlist(path2);
+            List<Oscar> listOscarFemale = readlist(path2);
+
 
             String actorYoungest = actorYoung(listOscarMale);
             String actressAward = actressYoungest(listOscarFemale);
             String actressAge = actressAgePremio(listOscarFemale);
 
 
-            Scanner reader = new Scanner(path1);
-            List<Oscar> infoOscars = new ArrayList<>();
 
         }
         public static String actorYoung (List<Oscar> oscars){
@@ -67,12 +62,13 @@
                 line = br.readLine();
                 while (line != null) {
                     String[] vect = line.split(",");
+                    int Index = Integer.parseInt((vect[0]));
                     String Year = vect[1];
                     Integer Age = Integer.parseInt(vect[2]);
                     String Name = vect[3];
                     String Movie = vect[4];
 
-                    Oscar osca = new Oscar(Year, Age, Name, Movie);
+                    Oscar osca = new Oscar(Index, Year, Age, Name, Movie);
 
                     list.add(osca);
                     listFemale.add(osca);
@@ -83,8 +79,6 @@
                 System.out.println("LISTA DE ATORES");
                 System.out.println("-------------------------------------------------------------------------------------------");
                 for (Oscar p : list)
-                    System.out.println(p);
-                for (Oscar p :listFemale)
                     System.out.println(p);
             } catch (IOException e) {
                 e.printStackTrace();

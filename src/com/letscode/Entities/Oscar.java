@@ -7,16 +7,19 @@ import static java.lang.Integer.*;
 
 public class Oscar implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    private int Index;
     private String Year;
     private int Age;
     private String Name;
     private String Movie;
 
 
-    public Oscar(String year, Integer age, String name, String movie) {
+    public Oscar(int index, String year, int age, String name, String movie) {
         super();
+        Index= index;
         Year = year;
-        Age = parseInt(String.valueOf(age));
+        Age = age;
         Name = name;
         Movie = movie;
     }
@@ -54,14 +57,23 @@ public class Oscar implements Serializable {
         Movie = movie;
     }
 
+    public int getIndex() {
+        return Index;
+    }
+
+    public void setIndex(int index) {
+        Index = index;
+    }
+
     @Override
     public String toString() {
-        return "Oscar[" +
-                "Year=" + Year +
+        return "Oscar{" +
+                "Index=" + Index +
+                ", Year='" + Year + '\'' +
                 ", Age=" + Age +
                 ", Name='" + Name + '\'' +
                 ", Movie='" + Movie + '\'' +
-                ']';
+                '}';
     }
 
 }
